@@ -1,10 +1,12 @@
 import './App.css';
 import PlacarOnline from './pages/Placar'
+import ConfigPlacarOnline from './pages/ConfigPlacar'
 
 function App() {
   return (
     <div className="App">
-      <PlacarOnline timeA="Jurubeba Sport Club" timeB="Matutino futebol Mananger" />
+      {/* <ConfigPlacarOnline /> */}
+      <PlacarOnline timeA="Jurubeba Sport Club" timeB="Matutino Futebol Mananger" />
     </div>
   );
 }
