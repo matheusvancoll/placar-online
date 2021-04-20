@@ -1,0 +1,40 @@
+.placar__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.placar__time {
+  padding: 8rem 8rem;
+
+  text-align: center;
+  border: 1px solid black;
+}
+
+.placar__time button {
+  border: none;
+}
+
+.gol-validado {
+  margin-top: 5rem;
+  padding: 0.75rem 2rem;
+}
+
+.gol-cancelado {
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.placar__tempo {
+  text-align: center;
+  padding: 10rem 2rem;
+}
+
+.placar__tempo h1 {
+  font-size: 2.5rem;
+}
+
+.placar__tempo h4 {
+  font-size: 4rem;
+}
