@@ -4,7 +4,7 @@ import './ConfigPlacar.css'
 function ConfigPlacarOnline(){
   return(
     <div>
-      <h1>TELA DE CONFIGURAÇÃO</h1>
+      <h1></h1>
     </div>
   )
 }
