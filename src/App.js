@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <ConfigPlacarOnline />
-      <PlacarOnline timeA="Jurubeba Sport Club" timeB="Matutino Futebol Mananger" />
+      <PlacarOnline timeA="AMIGOS DO TIME" timeB="ACADÊMICOS DO SALGUEIRO" />
     </div>
   );
 }

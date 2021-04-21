@@ -30,11 +30,17 @@ function PlacarOnline(props){
   }
 
   function confirmarReset() {
-    let confirmReset = window.confirm("Deseja realmente reiniciar o Cronômetro?")
+    let confirmReset = window.confirm("Deseja realmente reiniciar?")
     if(confirmReset){
       setTimer(0)
       setTimerOn(false)
     }
+  }
+
+  function resetAll() {
+    confirmarReset()
+    setGolsTimeA(0)
+    setGolsTimeB(0)
   }
   
   useEffect(() => {
@@ -54,32 +60,40 @@ function PlacarOnline(props){
   
   return(
     <div className="placar__container">
-      
-      <div className="placar__time a">
-        <h1>{props.timeA}</h1>
-        <h3>{GolsTimeA}</h3>
-        <button type="button" className="gol-validado" onClick={marcarGolsTimeA}>Goooooool</button>
-        <button type="button" className="gol-cancelado" onClick={anularGolsTimeA}>Cancelar Gol</button>
-      </div>
-      
       <div className="tempo__container">
-        <h1>TEMPO:</h1>
         <div className="tempo__contador">
+          <h1>TEMPO:</h1>
           <span>{("0" + Math.floor((Timer / 60000) % 60)).slice(-2)}:</span>
           <span>{("0" + Math.floor((Timer / 1000) % 60)).slice(-2)}</span>
         </div>
-        <button type="button" className="btnTimer" onClick={() => setTimerOn(true)}>Começar</button>
-        <button type="button" className="btnTimer" onClick={() => setTimerOn(false)}>Pausar</button>
-        <button type="button" className="btnTimer" onClick={confirmarReset}>Reiniciar</button>
+        <button type="button" id="btnStart" onClick={() => setTimerOn(true)}>Começar</button>
+        <button type="button" id="btnPause" onClick={() => setTimerOn(false)}>Pausar</button>
+        <button type="button" id="btnResume" onClick={confirmarReset}>Reiniciar</button>
       </div>
 
-      <div className="placar__time b">
-        <h1>{props.timeB}</h1>
-        <h3>{GolsTimeB}</h3>
-        <button type="button" className="gol-validado" onClick={marcarGolsTimeB}>Goooooool</button>
-        <button type="button" className="gol-cancelado" onClick={anularGolsTimeB}>Cancelar Gol</button>
+      <div className="times__container">
+        <div className="placar__time a">
+          <h1>{props.timeA}</h1>
+          <h4>{GolsTimeA}</h4>
+          <button type="button" className="gol-validado" onClick={marcarGolsTimeA}>Gooooool</button>
+          <button type="button" className="gol-cancelado" onClick={anularGolsTimeA}>Cancelar Gol</button>
+        </div>
+
+        <div className="divisor">
+          <h1>x</h1>
+        </div>
+
+        <div className="placar__time b">
+          <h1>{props.timeB}</h1>
+          <h4>{GolsTimeB}</h4>
+          <button type="button" className="gol-validado" onClick={marcarGolsTimeB}>Gooooool</button>
+          <button type="button" className="gol-cancelado" onClick={anularGolsTimeB}>Cancelar Gol</button>
+        </div>
       </div>
 
+      <div className="placar__reset">
+        <button type="button" onClick={resetAll}>Reiniciar Partida</button>
+      </div>
     </div>
   )
 }
