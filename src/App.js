@@ -1,11 +1,13 @@
 import './App.css';
-import PlacarOnline from './pages/Placar'
+import { BrowserRouter } from 'react-router-dom'
+
+import RouterPages from './pages/RouterPages'
 
 function App() {
   return (
-    <div className="App">
-      <PlacarOnline timeA="AMIGOS DO TIME" timeB="ACADÊMICOS DO SALGUEIRO" />
-    </div>
+    <BrowserRouter>
+        <RouterPages className="App"/>
+    </BrowserRouter>
   );
 }
 

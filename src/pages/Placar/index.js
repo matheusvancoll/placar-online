@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './Placar.css'
 
 function PlacarOnline(props){
@@ -92,6 +92,9 @@ function PlacarOnline(props){
       </div>
 
       <div className="placar__reset">
+        <Link to="/">
+          <button type="button">Iniciar novo jogo</button>
+        </Link>
         <button type="button" onClick={resetAll}>Reiniciar Partida</button>
       </div>
     </div>

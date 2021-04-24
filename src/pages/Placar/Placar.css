@@ -68,6 +68,7 @@
 .placar__time h1 {
   font-size: 1.25rem;
   height: 1.25rem;
+  text-transform: uppercase;
 }
 
 .placar__time h4 {
