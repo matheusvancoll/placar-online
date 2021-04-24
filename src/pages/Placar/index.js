@@ -93,7 +93,7 @@ function PlacarOnline(props){
 
       <div className="placar__reset">
         <Link to="/">
-          <button type="button">Iniciar novo jogo</button>
+          <button type="button" onClick={resetAll}>Iniciar novo jogo</button>
         </Link>
         <button type="button" onClick={resetAll}>Reiniciar Partida</button>
       </div>

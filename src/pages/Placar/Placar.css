@@ -62,6 +62,7 @@
   width: 100%;
 
   padding: 0.5rem;
+  border: 1px dashed black;
   border-radius: 15px;
 }
 
@@ -81,7 +82,8 @@
   font-size: 2rem;
 }
 
-.placar__time button {
+.placar__time button,
+.placar__reset button {
   margin: 0.15rem 0.3rem;
   padding: 0.5rem;
 
@@ -105,69 +107,19 @@
   background-color: coral;
 } */
 
-
-
-
-/* .placar__time {
-  width: 30rem;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0rem 0.5rem;
-  text-align: center;
-  border: 1px solid #dddddd;
-  text-transform: uppercase;
-  border-radius: 30px;
-}
-
-.a {
-  background-color: #00eb0887;
-}
-
-.b {
-  background-color: #00b4eb87;
-}
-
-.placar__time h3 {
-  margin-top: 2rem;
-  font-size: 7.5rem;
-}
-
-.placar__time button {
-  border: none;
-} */
-
-/* Styles dos botões dos times */
-/* .gol-validado {
-  margin-top: 5rem;
-  padding: 0.75rem 2rem;
-}
-
-.gol-cancelado {
+.placar__reset {
   margin-top: 1rem;
-  padding: 0.5rem 0.5rem;
-} */
-
-/* Style do tempo */
-/* .tempo__container {
-  text-align: center;
-  padding: 10rem 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-.tempo__container h1 {
-  font-size: 2.5rem;
-}
+@media only screen and (min-width: 768px) {
+  .placar__time h1 {
+    font-size: 2.75rem;
+  }
 
-.tempo__container span {
-  font-size: 4rem;
-}
+  .placar__time h4 {
+    font-size: 8rem;
+  }
 
-.btnTimer {
-  padding: 0.5rem 0.75rem;
-  margin: 0.5rem;
-  border: none;
-} */
+}
