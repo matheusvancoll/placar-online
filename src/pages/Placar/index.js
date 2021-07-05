@@ -34,10 +34,10 @@ export default function PlacarOnline(props){
 
     }, [TimerOn])
   
-  if ( TypePlacar == "config") {
+  if ( TypePlacar === "config") {
     return configPlacar()
   }
-  if ( TypePlacar == "placar" ) {
+  if ( TypePlacar === "placar" ) {
     return placar (NomeTime.timeA, NomeTime.timeB)
   }
 
