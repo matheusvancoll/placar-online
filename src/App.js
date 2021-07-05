@@ -1,13 +1,10 @@
 import './App.css';
-import { BrowserRouter } from 'react-router-dom'
 
-import RouterPages from './pages/Router'
+import Placar from './pages/Placar'
 
 function App() {
   return (
-    <BrowserRouter>
-        <RouterPages className="App"/>
-    </BrowserRouter>
+    <Placar />
   );
 }
 

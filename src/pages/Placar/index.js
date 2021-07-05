@@ -1,104 +1,130 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import './Placar.css'
 
-function PlacarOnline(props){
+export default function PlacarOnline(props){
+  
+  const [TypePlacar,setTypePlacar] = useState("config")
+  
+  const initialName = {
+    timeA: 'Time A',
+    timeB: 'Time B'
+  }
+  const [NomeTime, setNomeTime] = useState(initialName)
+
+
   const [GolsTimeA, setGolsTimeA] = useState(0)
   const [GolsTimeB, setGolsTimeB] = useState(0)
 
   const [Timer, setTimer] = useState(0)
   const [TimerOn, setTimerOn] = useState(false)
 
-  function marcarGolsTimeA() {
-    setGolsTimeA(GolsTimeA + 1)
-  }
 
-  function anularGolsTimeA(){
-    if(GolsTimeA > 0){
-      setGolsTimeA(GolsTimeA - 1)
-    }
-  }
-
-  function marcarGolsTimeB() {
-    setGolsTimeB(GolsTimeB + 1)
-  }
-
-  function anularGolsTimeB(){
-    if(GolsTimeB > 0){
-      setGolsTimeB(GolsTimeB - 1)
-    } 
-  }
-
-  function confirmarReset() {
-    let confirmReset = window.confirm("Deseja realmente reiniciar?")
-    if(confirmReset){
-      setTimer(0)
-      setTimerOn(false)
-    }
-  }
-
-  function resetAll() {
-    confirmarReset()
-    setGolsTimeA(0)
-    setGolsTimeB(0)
-  }
-  
   useEffect(() => {
     let interval = null
 
     if(TimerOn){
       interval = setInterval(() => {
-        setTimer(prevTime => prevTime + 100)
-      },100)
-    }else{
-      clearInterval(interval)
+          setTimer(prevTime => prevTime + 100)
+        },100)
+      }else{
+        clearInterval(interval)
+      }
+
+      return () => clearInterval(interval)
+
+    }, [TimerOn])
+  
+  if ( TypePlacar == "config") {
+    return configPlacar()
+  }
+  if ( TypePlacar == "placar" ) {
+    return placar (NomeTime.timeA, NomeTime.timeB)
+  }
+
+  function configPlacar() { 
+    function nomeiaTime(ev) {
+      const { name, value } = ev.target
+      setNomeTime({ ...NomeTime, [name]: value})
+    }
+  
+    return(
+      <div className="config-placar__container">
+        <div className="title__container">
+          <h1>Insira as informações da partida</h1>
+        </div>
+        <form className="info-partida-form">
+          <input type="text" placeholder="Nome do time A" name="timeA" id="timeA" onChange={nomeiaTime}/>
+          <input type="text" placeholder="Nome do time B" name="timeB"id="timeB" onChange={nomeiaTime}/>
+        </form>
+        <button id="start" type="button" onClick={()=> setTypePlacar("placar")}>Iniciar Partida!</button>
+      </div>
+    )
+  }
+
+
+  function placar(timeA, timeB) {
+    function anularGolsTimeA(){
+      if(GolsTimeA > 0){
+        setGolsTimeA(GolsTimeA - 1)
+      }
     }
 
-    return () => clearInterval(interval)
+    function anularGolsTimeB(){
+      if(GolsTimeB > 0){
+        setGolsTimeB(GolsTimeB - 1)
+      } 
+    }
 
-  }, [TimerOn])
-  
-  return(
-    <div className="placar__container">
-      <div className="tempo__container">
-        <div className="tempo__contador">
-          <h1>TEMPO:</h1>
-          <span>{("0" + Math.floor((Timer / 60000) % 60)).slice(-2)}:</span>
-          <span>{("0" + Math.floor((Timer / 1000) % 60)).slice(-2)}</span>
+    function confirmarReset() {
+      let confirmReset = window.confirm("Deseja realmente reiniciar?")
+      if(confirmReset){
+        setTimer(0)
+        setTimerOn(false)
+      }
+    }
+
+    function resetAll() {
+      confirmarReset()
+      setTypePlacar("config")
+      setGolsTimeA(0)
+      setGolsTimeB(0)
+    }
+
+    
+    return(
+      <div className="placar__container">
+        <div className="tempo__container">
+          <div className="tempo__contador">
+            <h1>TEMPO:</h1>
+            <span>{("0" + Math.floor((Timer / 60000) % 60)).slice(-2)}:</span>
+            <span>{("0" + Math.floor((Timer / 1000) % 60)).slice(-2)}</span>
+          </div>
+          <button type="button" id="btnStart" onClick={() => setTimerOn(true)}>Começar</button>
+          <button type="button" id="btnPause" onClick={() => setTimerOn(false)}>Pausar</button>
+          <button type="button" id="btnResume" onClick={confirmarReset}>Reiniciar</button>
         </div>
-        <button type="button" id="btnStart" onClick={() => setTimerOn(true)}>Começar</button>
-        <button type="button" id="btnPause" onClick={() => setTimerOn(false)}>Pausar</button>
-        <button type="button" id="btnResume" onClick={confirmarReset}>Reiniciar</button>
-      </div>
-
-      <div className="times__container">
-        <div className="placar__time a">
-          <h1>{props.timeA}</h1>
-          <h4>{GolsTimeA}</h4>
-          <button type="button" className="gol-validado" onClick={marcarGolsTimeA}>Gooooool</button>
-          <button type="button" className="gol-cancelado" onClick={anularGolsTimeA}>Cancelar Gol</button>
+        <div className="times__container">
+          <div className="placar__time a">
+            <h1>{timeA}</h1>
+            <h4>{GolsTimeA}</h4>
+            <button type="button" className="gol-validado" onClick={()=> setGolsTimeA(GolsTimeA + 1)}>Gooooool</button>
+            <button type="button" className="gol-cancelado" onClick={anularGolsTimeA}>Cancelar Gol</button>
+          </div>
+          <div className="divisor">
+            <h1>x</h1>
+          </div>
+          <div className="placar__time b">
+            <h1>{timeB}</h1>
+            <h4>{GolsTimeB}</h4>
+            <button type="button" className="gol-validado" onClick={()=> setGolsTimeB(GolsTimeB + 1)}>Gooooool</button>
+            <button type="button" className="gol-cancelado" onClick={anularGolsTimeB}>Cancelar Gol</button>
+          </div>
         </div>
-
-        <div className="divisor">
-          <h1>x</h1>
-        </div>
-
-        <div className="placar__time b">
-          <h1>{props.timeB}</h1>
-          <h4>{GolsTimeB}</h4>
-          <button type="button" className="gol-validado" onClick={marcarGolsTimeB}>Gooooool</button>
-          <button type="button" className="gol-cancelado" onClick={anularGolsTimeB}>Cancelar Gol</button>
-        </div>
-      </div>
-
-      <div className="placar__reset">
-        <Link to="/">
+        <div className="placar__reset">
           <button type="button" onClick={resetAll}>Iniciar novo jogo</button>
-        </Link>
-        <button type="button" onClick={resetAll}>Reiniciar Partida</button>
+          <button type="button" onClick={resetAll}>Reiniciar Partida</button>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
-
-export default PlacarOnline

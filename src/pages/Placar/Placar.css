@@ -1,3 +1,44 @@
+/* Config Palcar */
+.config-placar__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title__container {
+  width: 80%;
+  margin: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+}
+
+.info-partida-form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-partida-form input {
+  padding: 1rem 0;
+  margin: 0.5rem 0;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.config-placar__container button {
+  width: 15rem;
+  padding: 0.75rem 0.75rem;
+  margin-top: 3rem;
+  border-radius: 15px;
+  background-color: seagreen;
+  color: #fff;
+  font-weight: 700;
+}
+
+
 /* Style geral do placar */
 .placar__container {
   width: 100%;
@@ -98,14 +139,6 @@
   background-color: tomato;
 }
 
-/* 
-.a {
-  background-color: cornflowerblue
-}
-
-.b {
-  background-color: coral;
-} */
 
 .placar__reset {
   margin-top: 1rem;
