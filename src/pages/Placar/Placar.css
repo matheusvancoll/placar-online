@@ -39,120 +39,213 @@
 }
 
 
-/* Style geral do placar */
-.placar__container {
+/* Styles of placar*/
+.container {
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: rgb(0, 155, 249);
+  background: linear-gradient(45deg, rgba(0, 155, 249, 1) 0%, rgba(50, 185, 0, 1) 50%, rgba(66, 18, 130, 1) 100%);
+}
+
+.placar__container {
+  width: 90%;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+}
+
+/* Styles of times*/
+.placar__time {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.placar__time h1,
+h4 {
+  border-radius: 10px;
+  text-align: center;
+  margin: 0.30rem 0;
+  text-transform: uppercase;
+  background-color: #DFDFDF;
+}
+
+.placar__time h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 3rem;
+  font-size: 0.75rem;
+}
+
+.placar__time h4 {
+  height: 10rem;
+  line-height: 10rem;
+  font-size: 4rem;
+}
+
+/* Styles of timer */
+.tempo__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.tempo__contador {
+  background-color: #DFDFDF;
+  border-radius: 10px;
+  padding: 0.1rem 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.tempo__container button {
+  border: none;
+  background-color: #DFDFDF;
+  width: 6.5rem;
+  height: 1.5rem;
+  border-radius: 10px;
+  margin: 0.25rem 0;
+  transition: .5s;
+}
+
+.tempo__container button:hover {
+  background-color: #000;
+  color: #dfdfdf;
+}
+
+/* Styles of reset buttons */
+.placar__reset {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.marcar-button {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Style do cronômetro */
-.tempo__container,
-.times__container {
-  width: 80%;
-  margin: 0.5rem;
-  padding: 1rem;
-  text-align: center;
-  border: 1px solid #dddddd;
-  border-radius: 15px;
-}
-
-.tempo__contador {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tempo__contador h1 {
-  padding-right: 1rem;
-  font-size: 1.5rem;
-}
-
-.tempo__contador span {
-  font-size: 2.5rem;
-}
-
-.tempo__container button {
-  width: 5.5rem;
-  padding: 0.5rem 0.75rem;
-  margin: 0.5rem;
-  border-radius: 15px;
-}
-
-#btnStart {
-  background-color: seagreen;
-}
-
-#btnPause {
-  background-color: yellowgreen;
-}
-
-#btnResume {
-  background-color: tomato;
-}
-
-/* Style dos times */
-.times__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.placar__time {
-  width: 100%;
-
-  padding: 0.5rem;
-  border: 1px dashed black;
-  border-radius: 15px;
-}
-
-.placar__time h1 {
-  font-size: 1.25rem;
-  height: 1.25rem;
+.gol-validado,
+.gol-cancelado {
+  width: 6rem;
+  height: 2.5rem;
+  font-size: 0.75rem;
+  border-radius: 10px;
+  font-weight: 500;
   text-transform: uppercase;
-}
-
-.placar__time h4 {
-  font-size: 5rem;
-  margin: 4rem 0;
-}
-
-.divisor {
-  padding: 0.25rem;
-  font-size: 2rem;
-}
-
-.placar__time button,
-.placar__reset button {
-  margin: 0.15rem 0.3rem;
-  padding: 0.5rem;
-
-  border-radius: 15px;
+  transition: .5s;
 }
 
 .gol-validado {
-  background-color: seagreen;
+  background-color: rgb(0, 255, 0);
+}
+
+.gol-validado:hover {
+  background-color: rgb(39, 175, 39);
+  color: black;
 }
 
 .gol-cancelado {
   background-color: tomato;
+  color: black;
 }
 
+.gol-cancelado:hover {
+  background-color: black;
+  color: tomato;
+}
 
-.placar__reset {
-  margin-top: 1rem;
+.placar__reset button {
+  border: none;
+  margin: 0.3rem 0;
+}
+
+.reset-button {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.reset-button button {
+  width: 8rem;
+  height: 1.75rem;
+  border-radius: 10px;
+  background-color: #dfdfdf;
+  transition: 0.5s;
+}
+
+.reset-button button:hover {
+  background-color: black;
+  color: #dfdfdf;
 }
 
 @media only screen and (min-width: 768px) {
+  .placar__container {
+    height: 28rem;
+  }
+
+  .placar__time {
+    height: 25rem;
+  }
+
   .placar__time h1 {
-    font-size: 2.75rem;
+    height: 7rem;
+    font-size: 2rem;
   }
 
   .placar__time h4 {
-    font-size: 8rem;
+    height: 18rem;
+    line-height: 18rem;
+    font-size: 9rem;
   }
 
+  .tempo__contador {
+    width: 12rem;
+    margin-top: 4rem;
+  }
+
+  .tempo__container span {
+    font-size: 4rem;
+  }
+
+  .tempo__container button {
+    width: 10rem;
+    height: 2rem;
+  }
+
+  /* Styles of reset buttons */
+  .gol-validado {
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-size: 2rem;
+  }
+
+  .gol-cancelado {
+    width: 18rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+
+  .reset-button button {
+    width: 13rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: #dfdfdf;
+  }
 }

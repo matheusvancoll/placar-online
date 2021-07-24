@@ -92,37 +92,45 @@ export default function PlacarOnline(props){
 
     
     return(
-      <div className="placar__container">
-        <div className="tempo__container">
-          <div className="tempo__contador">
-            <h1>TEMPO:</h1>
-            <span>{("0" + Math.floor((Timer / 60000) % 60)).slice(-2)}:</span>
-            <span>{("0" + Math.floor((Timer / 1000) % 60)).slice(-2)}</span>
-          </div>
-          <button type="button" id="btnStart" onClick={() => setTimerOn(true)}>Começar</button>
-          <button type="button" id="btnPause" onClick={() => setTimerOn(false)}>Pausar</button>
-          <button type="button" id="btnResume" onClick={confirmarReset}>Reiniciar</button>
-        </div>
-        <div className="times__container">
+      <div className="container">
+
+        <div className="placar__container">
           <div className="placar__time a">
             <h1>{timeA}</h1>
             <h4>{GolsTimeA}</h4>
-            <button type="button" className="gol-validado" onClick={()=> setGolsTimeA(GolsTimeA + 1)}>Gooooool</button>
-            <button type="button" className="gol-cancelado" onClick={anularGolsTimeA}>Cancelar Gol</button>
           </div>
-          <div className="divisor">
-            <h1>x</h1>
+
+          <div className="tempo__container">
+            <div className="tempo__contador">
+              <span>{("0" + Math.floor((Timer / 60000) % 60)).slice(-2)}:</span>
+              <span>{("0" + Math.floor((Timer / 1000) % 60)).slice(-2)}</span>
+            </div>
+            <button type="button" id="btnStart" onClick={() => setTimerOn(true)}>Começar</button>
+            <button type="button" id="btnPause" onClick={() => setTimerOn(false)}>Pausar</button>
+            <button type="button" id="btnResume" onClick={confirmarReset}>Reiniciar</button>
           </div>
+
           <div className="placar__time b">
             <h1>{timeB}</h1>
             <h4>{GolsTimeB}</h4>
-            <button type="button" className="gol-validado" onClick={()=> setGolsTimeB(GolsTimeB + 1)}>Gooooool</button>
-            <button type="button" className="gol-cancelado" onClick={anularGolsTimeB}>Cancelar Gol</button>
           </div>
         </div>
+
         <div className="placar__reset">
-          <button type="button" onClick={resetAll}>Iniciar novo jogo</button>
-          <button type="button" onClick={resetAll}>Reiniciar Partida</button>
+          <div className="marcar-button">
+            <button type="button" className="gol-validado" onClick={()=> setGolsTimeA(GolsTimeA + 1)}>Goool</button>
+            <button type="button" className="gol-cancelado" onClick={anularGolsTimeA}>Cancelar Gol</button>
+          </div>
+          
+          <div className="reset-button">
+            <button type="button" onClick={resetAll}>Iniciar novo jogo</button>
+            <button type="button" onClick={resetAll}>Reiniciar Partida</button>
+          </div>
+
+          <div className="marcar-button">
+            <button type="button" className="gol-validado" onClick={()=> setGolsTimeB(GolsTimeB + 1)}>Goool</button>
+            <button type="button" className="gol-cancelado" onClick={anularGolsTimeB}>Cancelar Gol</button>
+          </div>
         </div>
       </div>
     )
